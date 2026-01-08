@@ -1,4 +1,3 @@
-
 public class Persona {
    private int Edad;
 
@@ -6,5 +5,5 @@ public class Persona {
     if (edad > 0) {
         this.edad = edad;
     }
-}
+  }
 }
