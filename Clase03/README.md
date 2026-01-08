@@ -161,3 +161,20 @@ try / catch maneja una excepción
 Las excepciones evitan estados inválidos
 
 Las excepciones propias representan errores del dominio
+
+
+## 🔚 Bloque finally
+
+El bloque `finally` se utiliza para ejecutar código que debe ejecutarse
+**siempre**, ocurra o no una excepción.
+
+La estructura completa es:
+
+try {
+    // código que puede fallar
+} catch (Exception e) {
+    // manejo del error
+} finally {
+    // código que se ejecuta siempre
+}
+
