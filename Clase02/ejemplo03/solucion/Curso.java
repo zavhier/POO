@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,20 +6,21 @@ public class Curso {
     private List<Alumno> alumnos;
 
     public Curso() {
-        this.alumnos = new ArrayList<>();
+        alumnos = new ArrayList<>();
     }
 
-    public void agregarAlumno(Alumno alumno) {
-        if (alumno == null) {
-            throw new IllegalArgumentException("No se puede agregar un alumno null.");
-        }
+    public boolean agregarAlumno(Alumno alumno) {
+        // Regla 1: no null
+        if (alumno == null) return false;
 
-        // Opcional / "subir nota": evitar legajos repetidos
-        if (existeLegajo(alumno.getLegajo())) {
-            throw new IllegalArgumentException("Ya existe un alumno con el legajo " + alumno.getLegajo());
-        }
+        // Regla 2: datos válidos
+        if (!alumno.esValido()) return false;
+
+        // Regla opcional: no repetir legajo
+        if (existeLegajo(alumno.getLegajo())) return false;
 
         alumnos.add(alumno);
+        return true;
     }
 
     private boolean existeLegajo(int legajo) {
