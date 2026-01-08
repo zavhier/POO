@@ -5,18 +5,8 @@ public class Alumno {
     private int legajo;
 
     public Alumno(String nombre, int edad, int legajo) {
-        // Validaciones al construir el objeto (evita estados inválidos)
-        if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede ser vacío.");
-        }
-        if (edad <= 0) {
-            throw new IllegalArgumentException("La edad debe ser mayor a 0.");
-        }
-        if (legajo <= 0) {
-            throw new IllegalArgumentException("El legajo debe ser positivo.");
-        }
-
-        this.nombre = nombre.trim();
+        // Cargamos lo que viene y luego validamos con esValido()
+        this.nombre = (nombre == null) ? "" : nombre.trim();
         this.edad = edad;
         this.legajo = legajo;
     }
@@ -31,6 +21,13 @@ public class Alumno {
 
     public int getLegajo() {
         return legajo;
+    }
+
+    public boolean esValido() {
+        if (nombre.isEmpty()) return false;
+        if (edad <= 0) return false;
+        if (legajo <= 0) return false;
+        return true;
     }
 
     public void mostrarDatos() {
